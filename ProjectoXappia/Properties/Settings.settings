@@ -1,0 +1,72 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ProjectoXappia.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="portNotFound" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">El puerto serie COM1 no se encontro.</Value>
+    </Setting>
+    <Setting Name="fingerPrintNotFound" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Fingerprint Sensor has not been connected </Value>
+    </Setting>
+    <Setting Name="driverNotFound" Type="System.String" Scope="User">
+      <Value Profile="(Default)">The loading of the fingerprint identification driver failed </Value>
+    </Setting>
+    <Setting Name="numberPort" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">19200</Value>
+    </Setting>
+    <Setting Name="conectionString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">server=localhost;user=root;database=projectoHuellas;port=3306;password=;</Value>
+    </Setting>
+    <Setting Name="queryTraerUnCliente" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SELECT * FROM `cliente` where DNI=</Value>
+    </Setting>
+    <Setting Name="queryTraerTodosLosClientes" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SELECT * FROM `cliente`</Value>
+    </Setting>
+    <Setting Name="querySetiarHuellaCliente" Type="System.String" Scope="User">
+      <Value Profile="(Default)">UPDATE `cliente` SET `Huella` = @huella WHERE `cliente`.`ClienteKey` = @key</Value>
+    </Setting>
+    <Setting Name="usuarioInvalido" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Usuario no registrado.</Value>
+    </Setting>
+    <Setting Name="enrollSucces" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Registro exitoso !</Value>
+    </Setting>
+    <Setting Name="usuarioNoHallado" Type="System.String" Scope="User">
+      <Value Profile="(Default)">No existe el dni en la Base</Value>
+    </Setting>
+    <Setting Name="DBError" Type="System.String" Scope="User">
+      <Value Profile="(Default)">No se pudo conectar a la base de datos, checke el conection string .</Value>
+    </Setting>
+    <Setting Name="HexaAbrirMolinete" Type="System.String" Scope="User">
+      <Value Profile="(Default)">02 64 89 83 32 03 5D</Value>
+    </Setting>
+    <Setting Name="dataSalesforceWsAuthentication" Type="System.String" Scope="User">
+      <Value Profile="(Default)">token?grant_type=password&amp;client_id=3MVG9jfQT7vUue.GEc7ivydwM517vPOwaDZo85TO3rxESiOpw9ax1hy1CVThAFi80tKXodY_7YEeTxPNpmgNR&amp;client_secret=2465685332049427962&amp;username=openpark@xappia.com.dev&amp;password=saasy2511BaBVzVa6K4R6saJnw6bgwnDcj</Value>
+    </Setting>
+    <Setting Name="salesforceUrlToken" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://test.salesforce.com/services/oauth2/</Value>
+    </Setting>
+    <Setting Name="salesforceError" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Algo va mal con el servicio de salesforce, intentelo denuevo más tarde.</Value>
+    </Setting>
+    <Setting Name="hexaAvvesoRechazado" Type="System.String" Scope="User">
+      <Value Profile="(Default)">02 64 89 80 03 6C</Value>
+    </Setting>
+    <Setting Name="ColumnaNombre" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Nombre</Value>
+    </Setting>
+    <Setting Name="ColumnaDNI" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DNI</Value>
+    </Setting>
+    <Setting Name="ColumnaApellido" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Apellido</Value>
+    </Setting>
+    <Setting Name="ColumnaPuedepasar" Type="System.String" Scope="User">
+      <Value Profile="(Default)">PuedePasar</Value>
+    </Setting>
+    <Setting Name="localDataBaseError" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Error al actualizar la base de datos con el nuevo registro. El registro de huella fue exitoso en salesforce.</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
