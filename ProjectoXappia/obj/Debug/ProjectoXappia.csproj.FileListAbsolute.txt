@@ -25,9 +25,6 @@ C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\FingerPrintSistem\Project
 \\PELA\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\obj\Debug\ProjectoXappia.pdb
 \\PELA\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\bin\Debug\ProjectoXappia.exe
 \\PELA\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\bin\Debug\ProjectoXappia.pdb
-\\PELA\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\bin\Debug\MetroFramework.Design.dll
-\\PELA\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\bin\Debug\MetroFramework.dll
-\\PELA\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\bin\Debug\MetroFramework.Fonts.dll
 \\PELA\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\bin\Debug\RestSharp.dll
 \\PELA\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\bin\Debug\RestSharp.xml
 \\PELA\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\obj\Debug\ProjectoXappia.csprojResolveAssemblyReference.cache

@@ -1,0 +1,16 @@
+\\PELA\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\bin\Release\ProjectoXappia.exe.config
+\\PELA\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\obj\Release\Interop.ZKFPEngXControl.dll
+\\PELA\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\obj\Release\ProjectoXappia.csproj.ResolveComReference.cache
+\\PELA\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\bin\Release\ProjectoXappia.exe
+\\PELA\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\bin\Release\ProjectoXappia.pdb
+\\PELA\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\bin\Release\MetroFramework.Design.dll
+\\PELA\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\bin\Release\MetroFramework.dll
+\\PELA\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\bin\Release\MetroFramework.Fonts.dll
+\\PELA\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\bin\Release\RestSharp.dll
+\\PELA\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\bin\Release\RestSharp.xml
+\\PELA\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\obj\Release\ProjectoXappia.Form1.resources
+\\PELA\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\obj\Release\ProjectoXappia.Properties.Resources.resources
+\\PELA\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\obj\Release\ProjectoXappia.UIPanel.resources
+\\PELA\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\obj\Release\ProjectoXappia.csproj.GenerateResource.Cache
+\\PELA\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\obj\Release\ProjectoXappia.exe
+\\PELA\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\obj\Release\ProjectoXappia.pdb

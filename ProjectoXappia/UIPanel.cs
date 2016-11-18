@@ -4,12 +4,11 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using MetroFramework.Forms;
 using ProjectoXappia.Properties;
 
 namespace ProjectoXappia
 {
-    public partial class UIPanel : MetroForm
+    public partial class UIPanel : Form
     {
 
         private Timer timer;

@@ -7,7 +7,6 @@ using System.Runtime.InteropServices;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
-using MetroFramework.Forms;
 using ProjectoXappia.Properties;
 using RestSharp;
 using RestSharp.Deserializers;
@@ -16,7 +15,7 @@ using ProjectoXappia.Class;
 
 namespace ProjectoXappia
 {
-    public partial class Form1 : MetroForm
+    public partial class Form1 : Form
     {
 
         private UIPanel UIPanel;
