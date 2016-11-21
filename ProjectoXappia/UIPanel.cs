@@ -4,11 +4,12 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using MetroFramework.Forms;
 using ProjectoXappia.Properties;
 
 namespace ProjectoXappia
 {
-    public partial class UIPanel : Form
+    public partial class UIPanel : MetroForm
     {
 
         private Timer timer;
@@ -17,16 +18,19 @@ namespace ProjectoXappia
             InitializeComponent();
             label1.AutoSize = true;
             label2.AutoSize = true;
+            label3.AutoSize=true;
             timer = new Timer { Interval = 1000 }; // todo: verificar cuanto es medio minuto
             timer.Tick += timer_Tick;
+
         }
+
 
         public void setInfo(bool isFromDB, DataRow cliente = null)
         {
             if (!isFromDB && cliente == null)
             {
 
-                loadController("Bienvenido :", Properties.Resources.TextoInvalido,
+                loadController(string.Empty,Settings.Default.usuarioInexistente,
                     Properties.Resources.TextoInvalido);
                 timer.Start();
             }
@@ -54,7 +58,7 @@ namespace ProjectoXappia
 
                         label1.ForeColor = Color.DarkRed;
 
-                        loadController("Bienvenido :", cliente["Apellido"].ToString(), cliente["DNI"].ToString());
+                        loadController("Bienvenido :", cliente[Settings.Default.ColumnaApellido].ToString(), cliente[Settings.Default.ColumnaDNI].ToString());
                     }
 
                     timer.Start();
@@ -83,31 +87,28 @@ namespace ProjectoXappia
             label1.Text = Label1;
 
             label2.Text = Label2;
-            label1.TextChanged += label1_TextChanged;
             //label2.TextChanged += label1_TextChanged;
         }
 
-        void label1_TextChanged(object sender, EventArgs e)
-        {
-            base.OnTextChanged(e);
-            resizeLabel();
 
-        }
-        private void resizeLabel()
-        {
 
-            Size sz = new Size(label2.Width, Int32.MaxValue);
-            sz = TextRenderer.MeasureText(label2.Text, label2.Font, sz, TextFormatFlags.WordBreak);
-            label2.Width = sz.Width;
-            //this.Font = sz.Height;
-
-        }
         private void timer_Tick(object sender, EventArgs e)
         {
             timer.Stop();
             clearInfo();
         }
 
+        public void notEnoughData()
+        {
+            label3.ForeColor = Color.DarkRed;
+
+            label3.Text="No se pudo tomar informacion suficiente, reintente la acción";
+        }
+
+        public void clearLabel3()
+        {
+            label3.Text = string.Empty;
+        }
 
     }
 }

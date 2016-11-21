@@ -4,9 +4,9 @@ using System.IO.Ports;
 using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices;
-using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using MetroFramework.Forms;
 using ProjectoXappia.Properties;
 using RestSharp;
 using RestSharp.Deserializers;
@@ -15,7 +15,7 @@ using ProjectoXappia.Class;
 
 namespace ProjectoXappia
 {
-    public partial class Form1 : Form
+    public partial class Form1 : MetroForm
     {
 
         private UIPanel UIPanel;
@@ -24,9 +24,7 @@ namespace ProjectoXappia
         private DataBase DB;
         private DataSet dbClients;
         private DataSet EnrollClient;
-        private List<byte[]> huellas = new List<byte[]>();
         private bool lastSucces = true;
-        private Timer timer;
         private SerialPort portCom1;
         private OAuthTokenResponse oAuthToken;
         public Form1()
@@ -36,9 +34,7 @@ namespace ProjectoXappia
             DB = new DataBase();
             dbClients = new DataSet();
             EnrollClient = new DataSet();
-            //salesforceCall("AYIHDBJKLQWD","38573102",0);
             label2.AutoSize = true;
-
             ZKEngine.OnCapture += ZKEngine_OnCapture;
             ZKEngine.OnImageReceived += ZKEngine_OnImageReceived;
             ZKEngine.OnEnroll += ZKEngine_OnEnroll;
@@ -68,11 +64,17 @@ namespace ProjectoXappia
             {
                 case 0:
                     lastSucces = true;
-                    if (ZKEngine.IsRegister)
+                    if (ZKEngine.IsRegister && (ZKEngine.EnrollIndex - 1) != 0)
                     {
                         label1.Text = "Quedan " + (ZKEngine.EnrollIndex - 1) + " verificaciones dactilares más";
 
                     }
+                    else
+                    {
+                        label1.Text = "";
+                    }
+                    
+
                     break;
                 case 1:
                     lastSucces = false;
@@ -128,9 +130,11 @@ namespace ProjectoXappia
 
         void ZKEngine_OnCapture(bool ActionResult, object ATemplate)
         {
+            label2.Text = string.Empty;
             if (ActionResult)
-            {
-                if (!ZKEngine.IsRegister && dbClients.Tables[0].Rows.Count != 0)
+            { 
+
+                if (!ZKEngine.IsRegister &&  dbClients != null && dbClients.Tables[0].Rows.Count != 0)
                 {
                     var found = false;
                     foreach (DataRow userRow in dbClients.Tables[0].Rows)
@@ -172,11 +176,12 @@ namespace ProjectoXappia
                 {
                     button5.Enabled = true;
                     UIPanel.setInfo(false, EnrollClient.Tables[0].Rows[0]);
+                    label2.Text = "Presione 'Iniciar asociacion' y coloque el dedo sobre el lector 3 veces para asociar la huella";
 
                 }
                 else
                 {
-                    MessageBox.Show("No existe el dni en la Base");
+                   label2.Text="No se hallo usuario con ese DNI";
 
                 }
 
@@ -192,6 +197,7 @@ namespace ProjectoXappia
             // init engine properties and quality
             //ZKEngine.FPEngineVersion = "10";
             label2.ForeColor = Color.DarkRed; ;
+            UIPanel = new UIPanel();
 
             var result = ZKEngine.InitEngine();
             ZKEngine.LowestQuality = 75;
@@ -248,7 +254,10 @@ namespace ProjectoXappia
             }
             else
             {
-                DB.getAllFingerPrint(dbClients);
+                if (!DB.getAllFingerPrint(dbClients))
+                {
+                    label2.Text += Settings.Default.DBError + Environment.NewLine;
+                }
             }
             label1.Text = "Autenticando con Salesforce...";
             oAuthToken = getToken();
@@ -263,6 +272,8 @@ namespace ProjectoXappia
                 button5.Enabled = false;
                 ZKEngine.BeginEnroll();
                 ZKEngine.BeginCapture();
+                label1.Text = "Quedan 3 verificaciones dactilares más";
+
             }
 
         }
@@ -277,13 +288,14 @@ namespace ProjectoXappia
 
                 label2.ForeColor = Color.DarkRed;
                 label2.Text = "No se pudo tomar informacion suficiente, reintente la acción";
+                UIPanel.notEnoughData();
 
             }
             else if (quality > 75 && !lastSucces)
             {
+                UIPanel.clearLabel3();
                 ModifyProgressBarColor.SetState(progressBar1, 1);
                 label2.Text = "";
-                label2.ForeColor = Color.DarkRed;
 
 
             }

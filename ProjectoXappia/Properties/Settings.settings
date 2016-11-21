@@ -68,5 +68,8 @@
     <Setting Name="localDataBaseError" Type="System.String" Scope="User">
       <Value Profile="(Default)">Error al actualizar la base de datos con el nuevo registro. El registro de huella fue exitoso en salesforce.</Value>
     </Setting>
+    <Setting Name="usuarioInexistente" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Hubo un problema al autenticar, no hallamos registro de su usuario.</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
