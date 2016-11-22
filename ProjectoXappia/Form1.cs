@@ -73,7 +73,7 @@ namespace ProjectoXappia
                     {
                         label1.Text = "";
                     }
-                    
+
 
                     break;
                 case 1:
@@ -94,7 +94,7 @@ namespace ProjectoXappia
                 {
                     if (!DB.saveTemplate(encodeFingerPrint, EnrollClient.Tables[0].Rows[0]))
                     {
-                        label2.Text = Settings.Default.localDataBaseError;
+                        label2.Text += Settings.Default.localDataBaseError + Environment.NewLine;
                     }
 
                     dbClients.Clear();
@@ -102,14 +102,14 @@ namespace ProjectoXappia
                     DB.getAllFingerPrint(dbClients);
                     EnrollClient.Clear();
                     label1.Text = "";
-                    label2.ForeColor=Color.Green;
-                    label2.Text=Settings.Default.enrollSucces;
+                    label2.ForeColor = Color.Green;
+                    label2.Text += Settings.Default.enrollSucces;
                 }
                 else
                 {
                     label2.ForeColor = Color.DarkRed;
 
-                    label2.Text="Hubo un error:" + Environment.NewLine + errorMsg;
+                    label2.Text = "Hubo un error:" + Environment.NewLine + errorMsg;
                     errorMsg = "";
 
                 }
@@ -131,47 +131,37 @@ namespace ProjectoXappia
         void ZKEngine_OnCapture(bool ActionResult, object ATemplate)
         {
             label2.Text = string.Empty;
-            if (ActionResult)
-            { 
+            if (!ActionResult) return;
+            dbClients.Clear();
+            DB.getAllFingerPrint(dbClients);
 
-                if (!ZKEngine.IsRegister &&  dbClients != null && dbClients.Tables[0].Rows.Count != 0)
+            if (ZKEngine.IsRegister || dbClients == null || dbClients.Tables[0].Rows.Count == 0) return;
+            var found = false;
+            foreach (DataRow userRow in dbClients.Tables[0].Rows)
+            {
+                string Oldtemplate = userRow["Huella"].ToString();
+
+                if (DBNull.Value.Equals(Oldtemplate)) continue;
+                bool compareresult = ZKEngine.VerFingerFromStr(ref Oldtemplate, ZKEngine.GetTemplateAsString(), true, true);
+                if (!compareresult) continue;
+
+                UIPanel.setInfo(true, userRow);
+                if ((bool)userRow[Settings.Default.ColumnaPuedepasar])
                 {
-                    var found = false;
-                    foreach (DataRow userRow in dbClients.Tables[0].Rows)
-                    {
-                        string Oldtemplate = userRow["Huella"].ToString();
-
-                        if (DBNull.Value.Equals(Oldtemplate)) continue;
-                        bool compareresult = ZKEngine.VerFingerFromStr(ref Oldtemplate, ZKEngine.GetTemplateAsString(), true, true);
-                        if (!compareresult) continue;
-
-                        UIPanel.setInfo(true, userRow);
-                        if ((bool) userRow[Settings.Default.ColumnaPuedepasar])
-                        {
-                            openTurnstile(Settings.Default.HexaAbrirMolinete);
-                            DB.saveIncomingLog(userRow[Settings.Default.ColumnaDNI].ToString());
-
-                        }
-                        else
-                            openTurnstile(Settings.Default.hexaAvvesoRechazado);
-
-                        found = true;
-                        break;
-                    }
-                    if (!found)
-                    {
-                        openTurnstile(Settings.Default.hexaAvvesoRechazado);
-                        
-                        UIPanel.setInfo(false);
-                    }
+                    openTurnstile(Settings.Default.HexaAbrirMolinete);
+                    DB.saveIncomingLog(userRow[Settings.Default.ColumnaDNI].ToString());
 
                 }
+                else
+                    openTurnstile(Settings.Default.hexaAvvesoRechazado);
 
-
-
+                found = true;
+                break;
             }
+            if (found) return;
+            openTurnstile(Settings.Default.hexaAvvesoRechazado);
 
-
+            UIPanel.setInfo(false);
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -189,7 +179,7 @@ namespace ProjectoXappia
                 }
                 else
                 {
-                   label2.Text="No se hallo usuario con ese DNI";
+                    label2.Text = "No se hallo usuario con ese DNI";
 
                 }
 
@@ -352,19 +342,15 @@ namespace ProjectoXappia
             var response = restClient.Execute(request);
             if (response.StatusCode == HttpStatusCode.BadRequest)
             {
-                    label2.ForeColor = Color.DarkRed;
-                    label2.Text ="Bad Request on token authentication : " + response.Content.Trim('/');
+                label2.ForeColor = Color.DarkRed;
+                label2.Text = "Bad Request on token authentication : " + response.Content.Trim('/');
 
+            }
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                throw new ExternalException("Fallo la autentication");
             }
             JsonDeserializer deserial = new JsonDeserializer();
-            try
-            {
-                deserial.Deserialize<OAuthTokenResponse>(response);
-            }
-            catch (Exception)
-            {
-
-            }
             return deserial.Deserialize<OAuthTokenResponse>(response);
 
         }
@@ -373,7 +359,18 @@ namespace ProjectoXappia
         {
             if (oAuthToken == null)
             {
-                oAuthToken = getToken();
+                try
+                {
+
+                    oAuthToken = getToken();
+                }
+                catch (ExternalException e)
+                {
+                    label2.ForeColor = Color.DarkRed;
+                    label2.Text = "Error en la llamada a salesforce:" + e.Message;
+                    ZKEngine.CancelEnroll();
+                    ZKEngine.BeginCapture();
+                }
 
             }
             var Client = new RestClient(oAuthToken.instance_url);
@@ -405,7 +402,17 @@ namespace ProjectoXappia
                     errorMsg += result.Content.Trim('/') + Environment.NewLine;
                     break;
                 case HttpStatusCode.Unauthorized:
-                    oAuthToken = getToken();
+                    try
+                    {
+                        oAuthToken = getToken();
+                    }
+                    catch (ExternalException e)
+                    {
+                        label2.ForeColor = Color.DarkRed;
+                        label2.Text = "Error en la llamada a salesforce:" + e.Message;
+                        ZKEngine.CancelEnroll();
+                        ZKEngine.BeginCapture();
+                    };
                     return salesforceCall(fingerprint, dni, intent++);
                 case HttpStatusCode.BadRequest:
                     errorMsg += "Bad Request : " + result.Content.Trim('/') + Environment.NewLine;
