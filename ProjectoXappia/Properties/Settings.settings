@@ -71,5 +71,8 @@
     <Setting Name="usuarioInexistente" Type="System.String" Scope="User">
       <Value Profile="(Default)">Hubo un problema al autenticar, no hallamos registro de su usuario.</Value>
     </Setting>
+    <Setting Name="querySetiarLog" Type="System.String" Scope="User">
+      <Value Profile="(Default)">INSERT INTO `ingresos` (`ID`, `DNI`, `Fecha`) VALUES (NULL, @dni, @fecha);</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -111,5 +111,27 @@ namespace ProjectoXappia.Class
             return true;
 
         }
+
+        public bool saveIncomingLog(string dni)
+        {
+            try
+            {
+                checkConection();
+                using (var cmd = new MySqlCommand(Settings.Default.querySetiarLog,
+                    Contecxt))
+                {
+                    cmd.Parameters.Add("@dni", MySqlDbType.UInt64).Value = dni;
+                    cmd.Parameters.Add("@fecha", MySqlDbType.DateTime).Value = DateTime.Now.ToString("yyyy-MM-dd H:mm:ss");
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+
+            catch (MySqlException)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

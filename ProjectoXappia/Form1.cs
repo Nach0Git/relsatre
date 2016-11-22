@@ -146,7 +146,15 @@ namespace ProjectoXappia
                         if (!compareresult) continue;
 
                         UIPanel.setInfo(true, userRow);
-                        openTurnstile(Settings.Default.HexaAbrirMolinete);
+                        if ((bool) userRow[Settings.Default.ColumnaPuedepasar])
+                        {
+                            openTurnstile(Settings.Default.HexaAbrirMolinete);
+                            DB.saveIncomingLog(userRow[Settings.Default.ColumnaDNI].ToString());
+
+                        }
+                        else
+                            openTurnstile(Settings.Default.hexaAvvesoRechazado);
+
                         found = true;
                         break;
                     }
