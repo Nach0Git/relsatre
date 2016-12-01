@@ -5,6 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using MetroFramework.Forms;
+using MySql.Data.MySqlClient.Memcached;
 using ProjectoXappia.Properties;
 
 namespace ProjectoXappia
@@ -16,6 +17,11 @@ namespace ProjectoXappia
         public UIPanel()
         {
             InitializeComponent();
+            this.Icon = Resources.openpark;
+
+
+            this.pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.Image = Resources.banner;
             label1.AutoSize = true;
             label2.AutoSize = true;
             label3.AutoSize=true;
@@ -29,45 +35,33 @@ namespace ProjectoXappia
         {
             if (!isFromDB && cliente == null)
             {
+                label1.ForeColor = Color.DarkRed;
 
-                loadController(string.Empty,Settings.Default.usuarioInexistente,
+                loadController(string.Empty, Settings.Default.usuarioInexistente,
                     Properties.Resources.TextoInvalido);
                 timer.Start();
             }
+
             else if (!isFromDB)
             {
-                loadController("Bienvenido :",
-                            cliente[Settings.Default.ColumnaApellido].ToString(),
-                            cliente[Settings.Default.ColumnaDNI].ToString());
+
+                label1.ForeColor = Color.DarkGreen;
+                loadController("Registrando a :",
+                    cliente[Settings.Default.ColumnaNombre].ToString(),
+                    cliente[Settings.Default.ColumnaDNI].ToString());
+
 
             }
-
             else
             {
-                try
-                {
-                    if ((bool)cliente[Settings.Default.ColumnaPuedepasar])
-                    {
-                        label1.ForeColor = Color.DarkGreen;
-                        loadController("Bienvenido :",
-                            cliente[Settings.Default.ColumnaApellido].ToString(),
-                            cliente[Settings.Default.ColumnaDNI].ToString());
-                    }
-                    else
-                    {
+                label1.ForeColor = Color.DarkGreen;
+                loadController("Bienvenido :",
+                    cliente[Settings.Default.ColumnaNombre].ToString(),
+                    cliente[Settings.Default.ColumnaDNI].ToString());
+                timer.Start();
 
-                        label1.ForeColor = Color.DarkRed;
-
-                        loadController("Bienvenido :", cliente[Settings.Default.ColumnaApellido].ToString(), cliente[Settings.Default.ColumnaDNI].ToString());
-                    }
-
-                    timer.Start();
-                }
-                catch (System.ArgumentException)
-                {
-                    MessageBox.Show("Estamos queriendo acceder a una columna que no existe");
-                }
             }
+
         }
 
         public Image byteArrayToImage(byte[] byteArrayIn)
@@ -87,7 +81,6 @@ namespace ProjectoXappia
             label1.Text = Label1;
 
             label2.Text = Label2;
-            //label2.TextChanged += label1_TextChanged;
         }
 
 
@@ -102,7 +95,7 @@ namespace ProjectoXappia
         {
             label3.ForeColor = Color.DarkRed;
 
-            label3.Text="No se pudo tomar informacion suficiente, reintente la acción";
+            label3.Text = "No se pudo leer la huella, por favor intentá nuevamente.";
         }
 
         public void clearLabel3()

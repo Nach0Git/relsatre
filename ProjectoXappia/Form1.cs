@@ -30,6 +30,9 @@ namespace ProjectoXappia
         public Form1()
         {
             InitializeComponent();
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls11;
+
+            this.Icon = Resources.openpark;
             ZKEngine = new ZKFPEngX();
             DB = new DataBase();
             dbClients = new DataSet();
@@ -145,23 +148,28 @@ namespace ProjectoXappia
                 bool compareresult = ZKEngine.VerFingerFromStr(ref Oldtemplate, ZKEngine.GetTemplateAsString(), true, true);
                 if (!compareresult) continue;
 
-                UIPanel.setInfo(true, userRow);
-                if ((bool)userRow[Settings.Default.ColumnaPuedepasar])
+                if ((bool) userRow[Settings.Default.ColumnaPuedepasar])
                 {
+                    UIPanel.setInfo(true, userRow);
                     openTurnstile(Settings.Default.HexaAbrirMolinete);
                     DB.saveIncomingLog(userRow[Settings.Default.ColumnaDNI].ToString());
 
                 }
                 else
+                {
+                    UIPanel.setInfo(false);
+
                     openTurnstile(Settings.Default.hexaAvvesoRechazado);
+                }
 
                 found = true;
                 break;
             }
             if (found) return;
+            UIPanel.setInfo(false);
+
             openTurnstile(Settings.Default.hexaAvvesoRechazado);
 
-            UIPanel.setInfo(false);
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -194,8 +202,8 @@ namespace ProjectoXappia
         {
             // init engine properties and quality
             //ZKEngine.FPEngineVersion = "10";
-            label2.ForeColor = Color.DarkRed; ;
             UIPanel = new UIPanel();
+            UIPanel.Show();
 
             var result = ZKEngine.InitEngine();
             ZKEngine.LowestQuality = 75;
@@ -235,7 +243,6 @@ namespace ProjectoXappia
 
         private void checkForDependencies()
         {
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls11;
 
             var ports = SerialPort.GetPortNames();
             if (!ports.Contains("COM1"))
@@ -346,7 +353,7 @@ namespace ProjectoXappia
                 label2.Text = "Bad Request on token authentication : " + response.Content.Trim('/');
 
             }
-            if (response.StatusCode != HttpStatusCode.OK)
+            else if (response.StatusCode != HttpStatusCode.OK)
             {
                 throw new ExternalException("Fallo la autentication");
             }

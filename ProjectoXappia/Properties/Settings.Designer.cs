@@ -283,7 +283,7 @@ namespace ProjectoXappia.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Hubo un problema al autenticar, no hallamos registro de su usuario.")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Por favor dirigite a recepción.")]
         public string usuarioInexistente {
             get {
                 return ((string)(this["usuarioInexistente"]));

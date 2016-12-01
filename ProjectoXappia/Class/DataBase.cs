@@ -14,10 +14,7 @@ namespace ProjectoXappia.Class
     {
         static MySqlConnection Contecxt = new MySqlConnection();
         //static MySqlCommand Command = new MySqlCommand();
-        MySqlDataReader rdr = null;
-        MySqlDataAdapter adaptador = new MySqlDataAdapter();
         public bool conected = false;
-        private DataSet ds = null;
 
         public DataBase()
         {

@@ -53,6 +53,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\openpark.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MetroFramework">
       <HintPath>C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
@@ -165,6 +168,11 @@
     <Content Include="Content\metro.min.css" />
     <Content Include="Fonts\metro.svg" />
     <Content Include="Imagenes\usuario invalido.jpg" />
+    <None Include="Resources\openParkIcon.ico" />
+    <None Include="Resources\Ba321-Gimnasio-OPEN-Gimnasio-Banner-Shop-Sign-Dropshipping.jpg" />
+    <None Include="Resources\openPark.jpg" />
+    <None Include="Resources\openpark.ico" />
+    <None Include="Resources\banner.jpg" />
     <Content Include="Scripts\metro.js" />
     <Content Include="Scripts\metro.min.js" />
     <None Include="Resources\PortNotFound.bmp" />

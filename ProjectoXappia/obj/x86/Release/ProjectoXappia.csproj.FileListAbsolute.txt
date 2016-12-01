@@ -1,0 +1,16 @@
+C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\bin\x86\Release\ProjectoXappia.exe.config
+C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\obj\x86\Release\Interop.ZKFPEngXControl.dll
+C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\obj\x86\Release\ProjectoXappia.csproj.ResolveComReference.cache
+C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\bin\x86\Release\ProjectoXappia.exe
+C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\bin\x86\Release\ProjectoXappia.pdb
+C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\bin\x86\Release\MetroFramework.Design.dll
+C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\bin\x86\Release\MetroFramework.dll
+C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\bin\x86\Release\MetroFramework.Fonts.dll
+C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\bin\x86\Release\RestSharp.dll
+C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\bin\x86\Release\RestSharp.xml
+C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\obj\x86\Release\ProjectoXappia.Form1.resources
+C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\obj\x86\Release\ProjectoXappia.Properties.Resources.resources
+C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\obj\x86\Release\ProjectoXappia.UIPanel.resources
+C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\obj\x86\Release\ProjectoXappia.csproj.GenerateResource.Cache
+C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\obj\x86\Release\ProjectoXappia.exe
+C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\obj\x86\Release\ProjectoXappia.pdb

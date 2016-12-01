@@ -61,11 +61,41 @@ namespace ProjectoXappia.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap banner {
+            get {
+                object obj = ResourceManager.GetObject("banner", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to server=localhost;user=root;database=projectoHuellas;port=3306;password=;.
         /// </summary>
         internal static string ConectionString {
             get {
                 return ResourceManager.GetString("ConectionString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon openpark {
+            get {
+                object obj = ResourceManager.GetObject("openpark", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon openParkIcon {
+            get {
+                object obj = ResourceManager.GetObject("openParkIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
@@ -84,16 +114,6 @@ namespace ProjectoXappia.Properties {
         internal static string TextoInvalido {
             get {
                 return ResourceManager.GetString("TextoInvalido", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap usuario_invalido {
-            get {
-                object obj = ResourceManager.GetObject("usuario_invalido", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
