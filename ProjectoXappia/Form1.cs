@@ -200,10 +200,7 @@ namespace ProjectoXappia
         }
         private void initEngine()
         {
-            // init engine properties and quality
-            //ZKEngine.FPEngineVersion = "10";
-            UIPanel = new UIPanel();
-            UIPanel.Show();
+
 
             var result = ZKEngine.InitEngine();
             ZKEngine.LowestQuality = 75;
