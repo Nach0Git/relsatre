@@ -14,6 +14,7 @@ namespace ProjectoXappia
     {
 
         private Timer timer;
+        private bool unt = false;
         public UIPanel()
         {
             InitializeComponent();
@@ -21,13 +22,36 @@ namespace ProjectoXappia
 
 
             this.pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.Image = Resources.banner;
+            this.pictureBox1.Image = Resources.Bienvenida;
+            var pos = this.PointToScreen(label1.Location);
+            pos = pictureBox1.PointToClient(pos);
+            label1.Parent = pictureBox1;
+            label1.Location = pos;
+            label1.BackColor = Color.Transparent;
             label1.AutoSize = true;
-            label2.AutoSize = true;
-            label3.AutoSize=true;
             timer = new Timer { Interval = 1000 }; // todo: verificar cuanto es medio minuto
             timer.Tick += timer_Tick;
+        }
 
+        protected override sealed void OnResize(EventArgs e)
+
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                var prev = pictureBox1.Size.Height;
+                pictureBox1.Size = new Size(pictureBox1.Size.Width + 150, prev);
+                this.pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                unt = true;
+
+            }
+            else if (unt)
+            {
+                var prev = pictureBox1.Size.Height;
+                pictureBox1.Size = new Size(pictureBox1.Size.Width - 150, prev);
+                this.pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                unt = false;
+            }
+            base.OnResize(e);
         }
 
 
@@ -35,17 +59,13 @@ namespace ProjectoXappia
         {
             if (!isFromDB && cliente == null)
             {
-                label1.ForeColor = Color.DarkRed;
-
-                loadController(string.Empty, Settings.Default.usuarioInexistente,
-                    Properties.Resources.TextoInvalido);
+                this.pictureBox1.Image = Resources.ErrorRecepcion;
                 timer.Start();
             }
 
             else if (!isFromDB)
             {
 
-                label1.ForeColor = Color.DarkGreen;
                 loadController("Registrando a :",
                     cliente[Settings.Default.ColumnaNombre].ToString(),
                     cliente[Settings.Default.ColumnaDNI].ToString());
@@ -54,7 +74,6 @@ namespace ProjectoXappia
             }
             else
             {
-                label1.ForeColor = Color.DarkGreen;
                 loadController("Bienvenido :",
                     cliente[Settings.Default.ColumnaNombre].ToString(),
                     cliente[Settings.Default.ColumnaDNI].ToString());
@@ -74,13 +93,14 @@ namespace ProjectoXappia
         public void clearInfo()
         {
             loadController(string.Empty, string.Empty, string.Empty);
+            this.pictureBox1.Image = Resources.Bienvenida;
+
         }
 
         public void loadController(string Label1, string Label2, string Label3)
         {
-            label1.Text = Label1;
+            label1.Text = Label1 + Label2;
 
-            label2.Text = Label2;
         }
 
 
@@ -93,15 +113,31 @@ namespace ProjectoXappia
 
         public void notEnoughData()
         {
-            label3.ForeColor = Color.DarkRed;
+            this.pictureBox1.Image = Resources.ErrorHuella;
+            timer.Start();
 
-            label3.Text = "No se pudo leer la huella, por favor intentá nuevamente.";
         }
 
         public void clearLabel3()
         {
-            label3.Text = string.Empty;
         }
+        bool flag = false;
+        private void UIPanel_MouseDown(object sender, MouseEventArgs e)
+        { 
+            flag = true;
+        } 
+        private void UIPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (flag == true)
+            {
+                this.Location = Cursor.Position; 
+            }
+        } 
+        private void UIPanel_MouseUp(object sender, MouseEventArgs e)
+        {
+            flag = false;
+        }
+    
 
     }
 }

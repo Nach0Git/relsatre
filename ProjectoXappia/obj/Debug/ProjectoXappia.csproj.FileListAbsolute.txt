@@ -44,7 +44,6 @@ C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\b
 C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\bin\Debug\MetroFramework.Fonts.dll
 C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\bin\Debug\RestSharp.dll
 C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\bin\Debug\RestSharp.xml
-C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\obj\Debug\ProjectoXappia.csprojResolveAssemblyReference.cache
 C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\obj\Debug\ProjectoXappia.Form1.resources
 C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\obj\Debug\ProjectoXappia.Properties.Resources.resources
 C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\obj\Debug\ProjectoXappia.UIPanel.resources

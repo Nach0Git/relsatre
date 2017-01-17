@@ -173,6 +173,10 @@
     <None Include="Resources\openPark.jpg" />
     <None Include="Resources\openpark.ico" />
     <None Include="Resources\banner.jpg" />
+    <None Include="Resources\bannerOpenPark.jpg" />
+    <None Include="Resources\Bienvenida.jpg" />
+    <None Include="Resources\ErrorHuella.jpg" />
+    <None Include="Resources\ErrorRecepcion.jpg" />
     <Content Include="Scripts\metro.js" />
     <Content Include="Scripts\metro.min.js" />
     <None Include="Resources\PortNotFound.bmp" />

@@ -71,11 +71,51 @@ namespace ProjectoXappia.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bannerOpenPark {
+            get {
+                object obj = ResourceManager.GetObject("bannerOpenPark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Bienvenida {
+            get {
+                object obj = ResourceManager.GetObject("Bienvenida", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to server=localhost;user=root;database=projectoHuellas;port=3306;password=;.
         /// </summary>
         internal static string ConectionString {
             get {
                 return ResourceManager.GetString("ConectionString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ErrorHuella {
+            get {
+                object obj = ResourceManager.GetObject("ErrorHuella", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ErrorRecepcion {
+            get {
+                object obj = ResourceManager.GetObject("ErrorRecepcion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
