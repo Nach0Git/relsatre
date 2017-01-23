@@ -136,7 +136,13 @@ namespace ProjectoXappia
             label2.Text = string.Empty;
             if (!ActionResult) return;
             dbClients.Clear();
-            DB.getAllFingerPrint(dbClients);
+            if (!DB.getAllFingerPrint(dbClients))
+            {
+                label2.Text = "Error al acceder a la base";
+                openTurnstile(Settings.Default.hexaAvvesoRechazado);
+                return;
+
+            }
 
             if (ZKEngine.IsRegister || dbClients == null || dbClients.Tables[0].Rows.Count == 0) return;
             var found = false;
@@ -210,7 +216,7 @@ namespace ProjectoXappia
                 case 0:
                     ZKEngine.BeginCapture();
                     //ZKEngine.CreateFPCacheDB();
-                    if (errorMsg != "")
+                    if (errorMsg != "" || label2.Text != "")
                     {
                         label2.Text += errorMsg;
 
@@ -347,7 +353,7 @@ namespace ProjectoXappia
             if (response.StatusCode == HttpStatusCode.BadRequest)
             {
                 label2.ForeColor = Color.DarkRed;
-                label2.Text = "Bad Request on token authentication : " + response.Content.Trim('/');
+                label2.Text += "Bad Request on token authentication : " + response.Content.Trim('/');
 
             }
             else if (response.StatusCode != HttpStatusCode.OK)

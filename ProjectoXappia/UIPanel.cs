@@ -66,7 +66,7 @@ namespace ProjectoXappia
             else if (!isFromDB)
             {
 
-                loadController("Registrando a :",
+                loadController("Registrando a : ",
                     cliente[Settings.Default.ColumnaNombre].ToString(),
                     cliente[Settings.Default.ColumnaDNI].ToString());
 
@@ -74,7 +74,7 @@ namespace ProjectoXappia
             }
             else
             {
-                loadController("Bienvenido :",
+                loadController("Bienvenido : ",
                     cliente[Settings.Default.ColumnaNombre].ToString(),
                     cliente[Settings.Default.ColumnaDNI].ToString());
                 timer.Start();

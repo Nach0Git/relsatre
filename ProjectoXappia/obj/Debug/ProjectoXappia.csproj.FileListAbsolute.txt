@@ -48,3 +48,4 @@ C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\o
 C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\obj\Debug\ProjectoXappia.Properties.Resources.resources
 C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\obj\Debug\ProjectoXappia.UIPanel.resources
 C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\obj\Debug\ProjectoXappia.csproj.GenerateResource.Cache
+C:\Users\Ignacio\Documents\Visual Studio 2012\Projects\relsatre\ProjectoXappia\obj\Debug\ProjectoXappia.csprojResolveAssemblyReference.cache
